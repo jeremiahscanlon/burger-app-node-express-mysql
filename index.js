@@ -22,7 +22,7 @@ app.use(express.static(staticContentFolder));
 require('./controllers/burgers_controller.js')(app);
 
 // set the port and start the server
-var PORT = process.env.PORT || 8181;
+var PORT = process.env.PORT || 80;
 app.listen(PORT, function(){
 	console.log('App listening on PORT ' + PORT);
 })

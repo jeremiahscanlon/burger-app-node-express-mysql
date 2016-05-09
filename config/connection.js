@@ -3,11 +3,11 @@ var mysql = require('mysql');
 
 // setup the mysql connection information
 var connection = mysql.createConnection({
-    port: 8889,
-    host: 'localhost',
-    user: 'root',
-    password: 'root',
-    database: 'burgers_db'
+    port: 3306,
+    host: '',
+    user: '',
+    password: '',
+    database: ''
 });
 
 // connect to the database and log the error or connect as ID
