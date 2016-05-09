@@ -21,8 +21,13 @@ app.set('view engine', 'handlebars');
 var orm = require('./config/orm.js')
 
 app.get('/', function(req, res){
-	orm.getAll('burgers',function(results){
-		res.json(results);
+	orm.getAll('burgers WHERE devoured = 0',function(results){
+		//res.json(results);
+		var data ={uneaten:results};
+		orm.getAll('burgers WHERE devoured = 1',function(results){
+			data.devoured = results;
+			res.render('index',data);
+		});
 	});
 });
 
