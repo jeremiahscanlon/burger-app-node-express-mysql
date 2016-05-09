@@ -14,7 +14,11 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.text());
 app.use(bodyParser.json({type:'application/vnd.api+json'}));
 
-// Get the routes for this dev
+// load the static files
+var staticContentFolder = __dirname + '/public';
+app.use(express.static(staticContentFolder));
+
+// Get the routes for the dev controller
 require('./controllers/burgers_controller.js')(app);
 
 // set the port and start the server

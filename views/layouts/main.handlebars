@@ -1,9 +1,97 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<title>Devour that Burgah</title>
-	</head>
-	<body>
-		{{{ body }}}
-	</body>
-</HTML>
+<head>
+	<meta charset="UTF-8">
+	<meta name="veiwport" content="width=device-width, initial-scale=1">
+	<title>Devouah that Burgah</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/css/reset.css">
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<link rel="stylesheet" type="text/css" href="/assets/css/custom.css">
+
+</head>
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<img src="/assets/images/burger_logo.png" id="mainLogo">
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<h1 class="text-center">Welcome to the burger house!</h1>
+				<p class="text-center">The idea is simple ... Create your own hella good burger and then Devour it!</p>
+			</div>	
+		</div>
+
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h4 class="text-center">Create A New Burger</h4>
+				<!-- Capture name of new burger and add call function to add -->	
+				<form class="addForm">
+					<div class="form-group">
+						<input type="email" class="form-control" id="burgerName" placeholder="Burger Name">
+					</div>
+					<button type="button" class="center-block btn btn-info" onClick="create();">Create!</button>
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<!-- Here is where Handlebars will add the info from the view -->
+			{{{ body }}}
+		</div>
+
+	</div>
+
+	<script type="text/javascript">
+		// function to send captured info to the api and show the modal pop-up with the response
+		function create(){
+			// grab the new name from the field
+			var name = $( '#burgerName' ).val().trim();
+			$( '#burgerName' ).val('');
+			// build the url created in the express routing for the api
+			var url = '/api/create/'+name;
+			// jquery post request
+			$.post(url, '', function(data){
+				console.log('response from sql:');
+				console.log(data);
+				location.reload();
+			});
+		};
+
+		// function to send id to the api and show the modal pop-up with the response
+		function devour(id){
+			// build the url created in the express routing for the api
+			var url = '/api/devour/'+id;
+			// jquery post request
+			$.post(url, '', function(data){
+				console.log('response from sql:');
+				console.log(data);
+				location.reload();
+			});
+		};
+
+		function reorder(id){
+			var url = '/api/reorder/'+id;
+			$.post(url, '', function(data){
+				console.log('response from sql:');
+				console.log(data);
+				location.reload();
+			});
+		};
+
+		function removeBurger(id){
+			var url = '/api/remove/'+id;
+			$.post(url, '', function(data){
+				console.log('response from sql:');
+				console.log(data);
+				location.reload();
+			});
+		};
+	</script>
+</body>
+</html>

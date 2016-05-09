@@ -15,13 +15,25 @@ var orm ={
 		});
 	},
 	create:function(name,callback){
-		var q = 'INSERT INTO burgers (burger_name,devoured) Values (?,false)';
+		var q = 'INSERT INTO burgers (burger_name,devoured) Values (?,0)';
 		connection.query(q,[name],function(err,results){
 			callback(results);
 		});
 	},
 	devour:function(id,callback){
 		var q = 'UPDATE burgers SET devoured = 1 WHERE id = ?';
+		connection.query(q,[id],function(err,results){
+			callback(results);
+		});
+	},
+	reorder:function(id,callback){
+		var q = 'UPDATE burgers SET devoured = 0 WHERE id = ?';
+		connection.query(q,[id],function(err,results){
+			callback(results);
+		});
+	},
+	remove:function(id,callback){
+		var q = 'DELETE FROM burgers WHERE id = ?';
 		connection.query(q,[id],function(err,results){
 			callback(results);
 		});

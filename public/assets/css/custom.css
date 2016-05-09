@@ -1,0 +1,19 @@
+html, body {
+	height: 100%;
+	width: 100%;
+}
+
+.jumbotron {
+	background-image: url('/assets/images/stripes.png');
+	background-repeat: repeat;
+	height:145px;
+	padding-top: 20px;
+}
+
+#mainLogo{
+    max-height: 100px;
+}
+
+.addForm {
+	margin-bottom: 40px;
+}

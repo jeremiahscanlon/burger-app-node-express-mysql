@@ -35,11 +35,25 @@ module.exports = function(app){
 
 	// when a post request is sent to "/api/devour"
 	app.post('/api/devour/:id', function(req, res){
-		// grab the text after "/api/create"
+		// grab the text after "/api/devour"
 		var value = req.params.id;
 		// call "devour" from the orm to mark a burger as eaten
 		orm.devour(value,function(results){
 			// send any response received back to the page.
+			res.json(results);
+		});
+	});	
+
+	app.post('/api/reorder/:id', function(req, res){
+		var value = req.params.id;
+		orm.reorder(value,function(results){
+			res.json(results);
+		});
+	});	
+
+	app.post('/api/remove/:id', function(req, res){
+		var value = req.params.id;
+		orm.remove(value,function(results){
 			res.json(results);
 		});
 	});	
