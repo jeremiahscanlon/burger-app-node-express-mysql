@@ -4,10 +4,10 @@ var mysql = require('mysql');
 // setup the mysql connection information
 var connection = mysql.createConnection({
     port: 3306,
-    host: '',
-    user: '',
-    password: '',
-    database: ''
+    host: 'l9dwvv6j64hlhpul.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'nqi21w0c7vo4ala2',
+    password: 'ssq3hxlsu0j28djr',
+    database: 'jtvmwxjacrncmpiz'
 });
 
 // connect to the database and log the error or connect as ID
